@@ -11,10 +11,10 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceConfiguration {
 
-  @Parameter(names = "-httpPort", description = "Http port", required = true)
+  @Parameter(names = "-httpPort", description = "HTTP port", required = true)
   private int httpPort;
 
-  @Parameter(names = "-httpAdminPort", description = "Http administration port", required = true)
+  @Parameter(names = "-httpAdminPort", description = "HTTP administration port", required = true)
   private int httpAdminPort;
 
   @Parameter(names = "-zkHost",
@@ -52,6 +52,9 @@ public class ServiceConfiguration {
              description = "Container name, intended to store the Linux container name",
              required = false)
   private String containerName;
+
+  @Parameter(names = "-maxRequestHeaderSize", description = "Size limit in bytes for HTTP headers", required = false)
+  private Integer maxRequestHeaderSize;
 
   @Parameter(names = "-conf", description = "Path to the configuration file", required = true)
   private String conf;
@@ -138,6 +141,14 @@ public class ServiceConfiguration {
 
   public void setContainerName(String containerName) {
     this.containerName = containerName;
+  }
+
+  public Integer getMaxRequestHeaderSize() {
+    return maxRequestHeaderSize;
+  }
+
+  public void setMaxRequestHeaderSize(Integer maxRequestHeaderSize) {
+    this.maxRequestHeaderSize = maxRequestHeaderSize;
   }
 
   public String getConf() {
